@@ -36,9 +36,9 @@ namespace Sailing
             BoatsRacing racer1 = new BoatsRacing(boat.name, boat.boat5, boat.boatNumber5);
             return racer1;
         }
-        public static Dictionary<string, BoatsRacing> loadRaceFile(Dictionary<string, BoatsRacing> raceDictionary)
+        public static Dictionary<string, BoatsRacing> loadRaceFile(Dictionary<string, BoatsRacing> raceDictionary, string path)
         {
-            StreamReader reader = System.IO.File.OpenText(@"c:\temp\Race List.txt");
+            StreamReader reader = System.IO.File.OpenText(@path + @"\Race List.txt");
             string line;
             while ((line = reader.ReadLine()) != null)
             {
@@ -224,7 +224,7 @@ namespace Sailing
                                     Console.Write("Enter the boat number of the boat ");
                                     int boatNumber = int.Parse(Console.ReadLine());
                                     using (StreamWriter file =
-            new StreamWriter(@"c:\temp\Full List.txt", true))
+            new StreamWriter(@path + @"\Full List.txt", true))
                                     {
                                         file.WriteLine("\n{0}\t{1}\t{2}", person, boatNumber, boat);
 
@@ -316,7 +316,7 @@ namespace Sailing
                                     Console.Write("Enter the boat number of the boat ");
                                     int boatNumber = int.Parse(Console.ReadLine());
                                     using (StreamWriter file =
-            new StreamWriter(@"c:\temp\Full List.txt", true))
+            new StreamWriter(@path + @"\Full List.txt", true))
                                     {
                                         file.WriteLine("\n{0}\t{1}\t{2}", person, boatNumber, boat);
 
@@ -359,7 +359,7 @@ namespace Sailing
                                     Console.Write("Enter the boat number of the boat ");
                                     int boatNumber = int.Parse(Console.ReadLine());
                                     using (StreamWriter file =
-            new StreamWriter(@"c:\temp\Full List.txt", true))
+            new StreamWriter(@path + @"\Full List.txt", true))
                                     {
                                         file.WriteLine("\n{0}\t{1}\t{2}", person, boatNumber, boat);
 
@@ -404,7 +404,7 @@ namespace Sailing
                                     Console.Write("Enter the boat number of the boat ");
                                     int boatNumber = int.Parse(Console.ReadLine());
                                     using (StreamWriter file =
-            new StreamWriter(@"c:\temp\Full List.txt", true))
+            new StreamWriter(@path + @"\Full List.txt", true))
                                     {
                                         file.WriteLine("\n{0}\t{1}\t{2}", person, boatNumber, boat);
 
@@ -440,7 +440,7 @@ namespace Sailing
                             Console.Write("Enter the boat number of boat {0}", i);
                             int boatNumber = int.Parse(Console.ReadLine());
                             using (StreamWriter file =
-    new StreamWriter(@"c:\temp\Full List.txt", true))
+    new StreamWriter(@path + @"\Full List.txt", true))
                             {
                                 file.WriteLine("{0}\t{1}\t{2}", name, boatNumber, boat);
 
