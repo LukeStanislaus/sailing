@@ -23,6 +23,15 @@ namespace Sailing
             //Boats boat1 = new Boats("Adrian Stanislaus", 2, "Laser Stratos", 927, "Laser", 182782);
             //Boats boat2 = new Boats("Luke Stanislaus", 1, "Laser Stratos", 182782, null, 0);
             //Boats boat3 = new Boats("Simon Clark", 2, "Phantom", 1080, "Laser", 1234);
+          
+
+            Dictionary<string, Boats> boatDictionary = new Dictionary<string, Boats>();
+            Dictionary<string, BoatsRacing> raceDictionary = new Dictionary<string, BoatsRacing>();
+            //boatDictionary.Add("hi", boat1);
+            Console.WriteLine("Enter path to folder of files.");
+            string path = Console.ReadLine();
+            boatDictionary = LoadFullFile(path);
+=======
             //List<Boats> boat = new Dictionary<string, Boats>();
             List<BoatsRacing> raceList = new List<BoatsRacing>();
             //Console.WriteLine("Enter path to folder of files");
@@ -56,6 +65,7 @@ namespace Sailing
                 Console.WriteLine("Fail");
                 */
             //boatDictionary = LoadFullFile.loadFullFile(path);
+
             //Console.WriteLine(boatDictionary["Adrian Stanislaus"].boat1);
             //string hi = LoadFullFile();
             //Console.WriteLine(boatDictionary["Abc"].name);
