@@ -46,18 +46,17 @@ new StreamWriter(@"c:\temp\Full List.txt", true))
                     racer.boatNumber);
             }
         }
-        public static void ExportToFile(Dictionary<string, Boats> fulldictionary, string path)
+        public static void ExportToFile(List<BoatsFromExcel> fulllist, string path)
         {
-            using (StreamWriter sw = File.AppendText(@path + @"\FullDump.csv"))
-            {
-                foreach (var entry in fulldictionary)
-                    sw.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}", entry.Value.name, entry.Value.noOfBoats, 
-                        entry.Value.boat1, entry.Value.boatNumber1, 
-                        entry.Value.boat2, entry.Value.boatNumber2,
-                         entry.Value.boat3, entry.Value.boatNumber3, 
-                         entry.Value.boat4, entry.Value.boatNumber4, 
-                         entry.Value.boat5, entry.Value.boatNumber5);
-            }
+            BoatsFromExcel tempboat = new BoatsFromExcel();
+            //using (StreamWriter sw = File.AppendText(@path + @"\FullDump.csv"))
+            //{
+                foreach (var entry in fulllist)
+
+                    LoadFullSQL.SQLAddboat(entry.name, entry.boat, entry.boatNumber);
+                    //sw.WriteLine("{0},{1},{2}", tempboat.name, 
+                        //tempboat.boat, tempboat.boatNumber);
+            //}
         }
 
         public static Dictionary<string, Boats> loadFullFile(string path)

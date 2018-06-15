@@ -34,7 +34,9 @@ namespace Sailing
                 path = string.Concat(path + path1[b] + @"\");
                 b++;
             }
+            Console.ReadLine();
             path = string.Concat(path + @"Data\");
+            LoadFullFile.ExportToFile(BoatsFromExcel.LoadFullExcel(path), path);
             //string path2 = path.Split(path)
             /*
             Console.WriteLine("Enter name");
@@ -64,8 +66,8 @@ namespace Sailing
             //boatDictionary.Add(boat2.name, boat2);
             //boatDictionary.Add(boat3.name, boat3);
             //LoadFullFile.ExportToFile(boatDictionary, path);
-
-            while (true)
+            /*
+            while (0==1)
             {
                 Console.WriteLine("Who is it?");
                 string person = Console.ReadLine();
@@ -263,8 +265,8 @@ namespace Sailing
             //boatDictionary.Add(boat2.name, boat2);
             //boatDictionary.Add(boat3.name, boat3);
             //LoadFullFile.ExportToFile(boatDictionary, path);
-
-            while (true)
+            /*
+            while (1==0)
             {
                 Console.WriteLine("Who is it?");
                 string person = Console.ReadLine();

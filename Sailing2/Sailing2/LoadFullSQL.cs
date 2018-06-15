@@ -13,7 +13,7 @@ namespace Sailing2
     {
         public static void displayboats(Boats personboat)
         {
-            Console.WriteLine("Your first boat, a(n) {0}, has boat number {1}",personboat.boat1, personboat.boatNumber1);
+            Console.WriteLine("Your first boat, a(n) {0}, has boat number {1}", personboat.boat1, personboat.boatNumber1);
             Console.WriteLine("Your second boat, a(n) {0}, has boat number {1}", personboat.boat2, personboat.boatNumber2);
             Console.WriteLine("Your third boat, a(n) {0}, has boat number {1}", personboat.boat3, personboat.boatNumber3);
             Console.WriteLine("Your fourth boat, a(n) {0}, has boat number {1}", personboat.boat4, personboat.boatNumber4);
@@ -21,7 +21,8 @@ namespace Sailing2
         }
 
         public static void SQLremoveboat(Boats boats, BoatsRacing boat)
-        { 
+        {
+            /*
             if (boats.name == boat.name)
             {
                 boats.noOfBoats = boats.noOfBoats - 1;
@@ -147,10 +148,10 @@ namespace Sailing2
                 LoadFullSQL.SQLAddboat(boats.name, boats.noOfBoats, boats.boat4, boats.boatNumber4);
                 LoadFullSQL.SQLAddboat(boats.name, boats.noOfBoats, boats.boat5, boats.boatNumber5);
 
+           */
+        
 
-            }
-
-                
+    
                 
         }
         public static void SQLremove(bool race, string name)
@@ -230,34 +231,26 @@ public List<Boats> GetBoats()
                 connection.Query("call enterperson(@name)", new { name = Name });
             }
         }
-        public static void SQLAddboat(string name, int noofboats, string boat, int boatnumber)
+        public static void SQLAddboat(string name, string boat, int boatnumber)
         {
             using (IDbConnection connection = new MySql.Data.MySqlClient.MySqlConnection(Helper.CnnVal("sailingDB")))
             {
                 //connection.Query("call newboat('" + name + "', '" + boat + "', '" + boatnumber + "','" + noofboats + "')");
-                connection.Query("call newboat(@name, @boat, @boatnumber, @noofboats)", new
+                connection.Query("call newboat(@name, @boat, @boatnumber)", new
                 {
                     name = name,
                     boat = boat,
                     boatnumber = boatnumber,
-                    noofboats = noofboats
                 });
             }
         }
-        public static void AddBoat(Boats personboat)
+        public static void AddBoat(BoatsFromExcel personboat)
         {
-            Console.WriteLine("Would you like to add a new boat, Y/N?");
-            string response1 = Console.ReadLine();
-            if (response1 == "y" || response1 == "Y")
-            {
-                Console.WriteLine("Enter boatname");
-                string boat = Console.ReadLine();
-                Console.WriteLine("Enter boatnumber");
-                int boatnumber = int.Parse(Console.ReadLine());
 
                 using (IDbConnection connection = new MySql.Data.MySqlClient.MySqlConnection(Helper.CnnVal("sailingDB")))
                 {
 
+                /*
                     try
                     {
                         var boat1 = connection.Query<Boats>("call returnboat(@name)", new { name = personboat.name }).First();
@@ -342,10 +335,10 @@ public List<Boats> GetBoats()
                     {
                         Console.WriteLine("Your name is not in my database");
                     }
-
+                    */
 
                 }
             }
         }
     }
-}
+

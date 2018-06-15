@@ -13,8 +13,9 @@ namespace Sailing2
     public class BoatsFromExcel
     {
         //public static Dictionary<string, Boats> LoadFullExcel(string path)
-        public static void LoadFullExcel(string path)
+        public static List<BoatsFromExcel> LoadFullExcel(string path)
         {
+            List<BoatsFromExcel> list = new List<BoatsFromExcel>();
             using (var stream = File.Open(@path + @"\WFSC_DATA (3).xlsx", FileMode.Open, FileAccess.Read))
             {
 
@@ -47,9 +48,9 @@ new StreamWriter(@path + @"\Full List.txt", true))
                             if (!dr["Column2"].ToString().Equals("") && !dr["Column2"].ToString().Equals("Class"))
                             {
 
-
-                                file.WriteLine("{0}\t{1}\t{2}", dr["Column0"].ToString(),
-                                dr["Column1"].ToString(), dr["Column2"].ToString());
+                                list.Add(new BoatsFromExcel(dr["Column0"].ToString(), int.Parse(dr["Column1"].ToString()), dr["Column2"].ToString()));
+                                //file.WriteLine("{0}\t{1}\t{2}", dr["Column0"].ToString(),
+                                //dr["Column1"].ToString(), dr["Column2"].ToString());
                                 //Console.WriteLine(dr["Column2"].ToString());
                                 //Dictionary<string, Boats> nothing1 = new Dictionary<string, Boats>();
 
@@ -61,6 +62,7 @@ new StreamWriter(@path + @"\Full List.txt", true))
                             // The result of each spreadsheet is in result.Tables
                         }
                         file.Close();
+                        return list;
                     }
                 }
 
@@ -116,6 +118,10 @@ new StreamWriter(@path + @"\Full List.txt", true))
             boatNumber = BoatNumber;
             boat = Boat;
 
+        }
+
+        public BoatsFromExcel()
+        {
         }
     }
 }
